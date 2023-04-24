@@ -14,7 +14,7 @@ On windows
 
 ``` setx OPENAI_API_KEY "<yourkeyhere>" ```
 
-The run the script
+To run the script
 
 ``` python gpt2gpt.py ```
 

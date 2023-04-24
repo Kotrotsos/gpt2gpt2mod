@@ -71,11 +71,11 @@ def main(participant1, participant2, model):
         conversation_history.append({"role": "user", "content": part2_response})
         time.sleep(3)
         
-        # Moderator input every 5 turns
+        # Moderator input every 3 turns
         mod_counter += 1
         if mod_counter % 3 == 0:
             mod_prompt = list(conversation_history.copy())
-            mod_prompt.append({"role": "assistant", "content": "As a moderator, provide some extra helpful information that adds to the discussion. For instance, it maybe poses a new question that hasn't been discussed yet. Also, if you think the conversation Is not going anywhere and should end. Reply only with [END]. Mod:"})
+            mod_prompt.append({"role": "assistant", "content": "As a moderator, provide some extra helpful information that adds to the discussion. For instance, it maybe poses a new question that hasn't been discussed yet. Also, if you think the conversation Is not going anywhere, like when the conversation constantly repeats itself and should end. Reply only with [END]. Mod:"})
             mod_response = get_gpt3_response(mod_prompt, "gpt-3.5-turbo")
             print(f"#Moderator: {mod_response}")
             append_to_file(filename, f"#Moderator: {mod_response}")
@@ -87,7 +87,7 @@ def main(participant1, participant2, model):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("-p", "--participants", help="Participants in the conversation, separated by a colon (e.g. 'Dave:Cindy')", default="part1:part2")
+    parser.add_argument("-p", "--participants", help="Participants in the conversation, separated by a colon (e.g. 'Dave:Cindy')", default="Bob:Alice")
     parser.add_argument("-m", "--model", help="Model to use for the conversation (e.g. 'gpt-3.5-turbo')", default="gpt-3.5-turbo")
     args = parser.parse_args()
 

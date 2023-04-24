@@ -16,7 +16,7 @@ On windows
 
 To run the script
 
-``` python gpt2gpt.py ```
+``` python gpt2gpt.py -p Bob:Alice ```
 
 or
 
